@@ -46,8 +46,9 @@ class Plugin {
     }
 
     public function OnEmptyTrash() {
-        if (empty($ids)) return;
-        $this->data->deleteByRid($ids, true);
+        if (!empty($this->modx->event->params['ids'])) {
+            $this->data->deleteByRid($this->modx->event->params['ids'], true);
+        }
     }
 }
 
